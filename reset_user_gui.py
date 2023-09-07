@@ -23,14 +23,14 @@ while True:
         target_user = values['-USERNAME-']
         
         # Copy contents of /etc/skel to user's home directory
-        subprocess.run(['cp', '-R', '/etc/skel/.', f'~/'])
+        subprocess.run(['cp', '-R', '/etc/skel/.', f'/home/{target_user}'])
         
         # Delete existing configuration files
-        subprocess.run(['rm', '-rf', f'~/.config'])
+        subprocess.run(['rm', '-rf', f'/home/{target_user}/.config'])
 
-        subprocess.run(['rm', '-rf', f'~/.local'])
+        subprocess.run(['rm', '-rf', f'/home/{target_user}/.local'])
 
-        subprocess.run(['rm', '-rf', f'~/.cache'])
+        subprocess.run(['rm', '-rf', f'/home/{target_user}/.cache'])
         
         # Show a message box indicating the reset is complete
         sg.popup('Reset complete!', title='Reset User Configurations')
